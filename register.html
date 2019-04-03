@@ -1,32 +1,32 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/register.css">
+    
     <title>Register</title>
 </head>
 <body>
 <header>
-    <nav><a href="index.html">主页</a> </nav>
+    <nav><a href="../lab1/index.html">主页</a> </nav>
 </header>
 <h1>创建帐户</h1>
 <section>
 <form action="#" method="POST">
-    <p>
+    <p class="order">
         请设置用户名<br>
         <input type="text" name="ID" pattern="^[a-zA-Z0-9_]{,10}$" required>
     </p>
-    <p>
+    <p class="order">
         请设置密码<br>
         <input type="password" name="password"pattern="^\w{8,}$"required>
     </p>
-    <p>
+    <p class="order">
         请确认密码<br>
         <input type="password" name="repassword"pattern="^\w{8,}$"required>
     </p>
-    <p>
+    <p class="order">
         您的居住地<br>
         <select name="area" required>
         
@@ -38,12 +38,12 @@
            
         </select>
     </p>
-    <p>
+    <p class="order">
         您常用的手机号码<br>
         <input type="text" name="number" pattern="^1[0-9]{10}$" required>
        
     </p>
-    <p>
+    <p class="order">
         您的常用设备<br>
         <input type="checkbox" name="PC" value="PC">PC
         <input type="checkbox" name="PlayStation 4" value="PlayStation 4">PlayStation 4
@@ -51,13 +51,13 @@
         <input type="checkbox" name="XBox One" value="XBox One">XBox One
     </p>
 
-    <p>
+    <p class="order">
         输入答案<br>
         residue of 1/(z^2+4)^2 at z=2i<br>
         <input type="text" name="captcha" pattern="^[0-9]$" required>
-        <input type="button" value="刷新">
+        <input id="button" type="button" value="刷新">
     </p>
-    <p>
+    <p class="order">
         请复查以下协议，并通过选择页面底部的复选框同意此协议。您必须同意这些协议条款才能继续。
     </p>
     <textarea disabled="true" >
@@ -127,10 +127,10 @@
     
 </textarea>
 <br>
-<input type="radio" value="agree" name="agree">同意
-<input type="radio" value="disagree" name="agree">不同意
-<p>
-<input type="submit" value="注册" name="register">
+<input class="agree" type="radio" value="agree" name="agree">同意
+<input class="agree" id="disagree" type="radio" value="disagree" name="agree">不同意
+<p class="order">
+<input type="submit" id="submit" value="注册" name="register">
 </p>
 </form>
 </section>
