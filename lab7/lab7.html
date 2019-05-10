@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <title>Chapter 10</title>
+    <link rel="stylesheet" href="lab7.css">
+    <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("img[alt='Still Life with Flowers in a Glass Vase']").click(function () {
+                $("figure img").attr("src", "images/medium/painting1.jpg");
+                $("figcaption span").text("Jan Davidsz. de Heem, 1650 - 1683");
+                $("figcaption em").text("Still Life with Flowers in a Glass Vase");
+
+            });
+            $("img[alt='Portrait of Alida Christina Assink']").click(function () {
+                $("figure img").attr("src", "images/medium/painting2.jpg");
+                $("figcaption span").text("Jan Adam Kruseman, 1833");
+                $("figcaption em").text("Portrait of Alida Christina Assink");
+
+            });
+            $("img[alt='Self-portrait']").click(function () {
+                $("figure img").attr("src", "images/medium/painting3.jpg");
+                $("figcaption span").text("Vincent van Gogh, 1887");
+                $("figcaption em").text("Self-portrait");
+
+            });
+            $("img[alt='William II, Prince of Orange, and his Bride, Mary Stuart']").click(function () {
+                $("figure img").attr("src", "images/medium/painting4.jpg");
+                $("figcaption span").text("Anthony van Dyck, 1641");
+                $("figcaption em").text("William II, Prince of Orange, and his Bride, Mary Stuart");
+
+            });
+            $("img[alt='Milkmaid']").click(function () {
+                $("figure img").attr("src", "images/medium/painting5.jpg");
+                $("figcaption span").text("Johannes Vermeer, c. 1660");
+                $("figcaption em").text("Still Life with Flowers in a Glass Vase");
+
+            });
+            $("input").on("input propertychange", function () {
+                var opa = $('#sliderOpacity').val() / 100;
+                var opacity = `opacity(${opa})`;
+                var sat = $('#sliderSaturation').val() / 100;
+                var saturate = `saturate(${sat})`;
+                var bri = $('#sliderBrightness').val() / 100;
+                var brightness = `brightness(${bri})`;
+                var gra = $('#sliderGray').val() / 100;
+                var grayscale = `grayscale(${gra})`;
+                var hue = $('#sliderHue').val();
+                var hueRotate = `hue-rotate(${hue}deg)`;
+                var blu = $('#sliderBlur').val() + "px";
+                var blur = `blur(${blu})`;
+                var all = opacity + saturate + brightness + hueRotate + grayscale + blur;
+                $("figure img").css("filter", all);
+                $("#resetFilters").click(function () {
+
+                    $("figure img").css("filter", "none");
+                    $("form")[0].reset();
+                })
+            })
+
+
+        });
+    </script>
+</head>
+
+<body class="tiled">
+    <header>
+        <h1>Art Filters</h1>
+    </header>
+    <main>
+        <div id="sliderBox">
+            <form>
+
+                <p> <label>Opacity: </label><input type="range" id="sliderOpacity" min="0" max="100" value="100"
+                        class="sliders" /> <span id="numOpacity">100</span>%</p>
+                <p><label>Saturation: </label><input type="range" id="sliderSaturation" min="1" max="300" value="100"
+                        class="sliders" /> <span id="numSaturation">100</span>%</p>
+                <p><label>Brightness: </label><input type="range" id="sliderBrightness" min="0" max="300" value="100"
+                        class="sliders" /> <span id="numBrightness">100</span>%</p>
+                <p><label>Hue Rotate: </label><input type="range" id="sliderHue" min="0" max="360" value="0"
+                        class="sliders" /> <span id="numHue">0</span>deg</p>
+                <p><label>Grayscale: </label><input type="range" id="sliderGray" min="0" max="100" value="0"
+                        class="sliders" /> <span id="numGray">0</span>%</p>
+                <p><label>Blur: </label><input type="range" id="sliderBlur" min="0" max="10" value="0"
+                        class="sliders" /> <span id="numBlur">0</span>px</p>
+                <p><button id="resetFilters" type="button">Reset</button> </p>
+            </form>
+        </div>
+        <figure id="imgManipulated">
+            <img src="images/medium/painting1.jpg">
+            <figcaption>
+                <em>Still Life with Flowers in a Glass Vase</em> <br>
+                <span>
+                    Jan Davidsz. de Heem, 1650 - 1683
+                </span>
+            </figcaption>
+        </figure>
+        <div id="thumbBox">
+            <div><img src="images/small/painting1.jpg" alt="Still Life with Flowers in a Glass Vase"
+                    title="Jan Davidsz. de Heem, 1650 - 1683" /></div>
+            <div><img src="images/small/painting2.jpg" alt="Portrait of Alida Christina Assink"
+                    title="Jan Adam Kruseman, 1833" /></div>
+            <div><img src="images/small/painting3.jpg" alt="Self-portrait" title="Vincent van Gogh, 1887" /></div>
+            <div><img src="images/small/painting4.jpg" alt="William II, Prince of Orange, and his Bride, Mary Stuart"
+                    title="Anthony van Dyck, 1641" /></div>
+            <div><img src="images/small/painting5.jpg" alt="Milkmaid" title="Johannes Vermeer, c. 1660" /></div>
+        </div>
+    </main>
+    <script>
+
+    </script>
+</body>
+
+</html>
