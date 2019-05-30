@@ -9,9 +9,11 @@ $shippingFlatAmount = 200;
 // 计算 subtotal, shipping, grand total
 // grand total = subtotal + shipping
 // 如果subtotal值超过阈值，则为100；反之则为$shippingFlatAmount
+
 $subtotal = 0;
 $shipping = 0;
 $grandTotal = 0;
+
 
 ?>
 
@@ -35,12 +37,13 @@ $grandTotal = 0;
 <body>
    
 <!-- You should decide where to add the `header.inc.php` and `left.inc.php` --> 
-<?php include 'header.inc.php'; ?>
-<?php include 'left.inc.php'; ?>
+
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
-
+<?php include 'left.inc.php'; ?>
  
+<?php include 'header.inc.php'; ?>
   <main class="mdl-layout__content mdl-color--grey-50">
     <header class="mdl-color--blue-grey-200">
    
@@ -93,14 +96,22 @@ $grandTotal = 0;
                   <tfoot>
                       <tr class="totals">
                           <td colspan="4">Subtotal</td>
+                          <?php 
+                           $subtotal=$quantity1*$price1+$quantity2*$price2+$quantity3*$price3+$quantity4*$price4;
+                           ?>
                           <td>$<?php echo number_format($subtotal,2); ?></td>
                       </tr>
                       <tr class="totals">
                           <td colspan="4">Shipping</td>
+                          <?php if($subtotal>=$shippingThreshold)
+                          $shipping=100;
+                          else $shipping=$shippingFlatAmount;
+                          ?>
                           <td>$<?php echo number_format($shipping,2); ?></td>
                       </tr> 
                       <tr class="grandtotals">
                           <td colspan="4">Grand Total</td>
+                          <?php $grandTotal=$subtotal+$shipping;?>
                           <td>$<?php echo number_format($grandTotal,2); ?></td>
                       </tr>                            
                   </tfoot>          
@@ -111,6 +122,7 @@ $grandTotal = 0;
                         outputOrderRow($file2, $title2, $quantity2, $price2);
                         outputOrderRow($file3, $title3, $quantity3, $price3);
                         outputOrderRow($file4, $title4, $quantity4, $price4);
+                       
                     ?>
           
                   </tbody>
